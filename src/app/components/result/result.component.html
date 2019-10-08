@@ -1,0 +1,112 @@
+<div *ngIf="!socketData" class="row">
+  <div class="col-md-12 text-center">
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+  </div>
+</div>
+
+<div *ngIf="socketData" class="row">
+ <div class="col-md-4 mb-2">
+  <ul class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+          <strong class="text-muted">Realtime Data</strong>
+          <div class="spinner-grow text-success" role="status">
+              <span class="sr-only">Loading...</span>
+          </div>
+      </li>
+    <li class="list-group-item">
+        <div class="media">
+            <img src="../../../assets/img/candidates/gota.jpg" height="25%" width="25%" class="img-thumbnail mr-3" alt="...">
+            <div class="media-body">
+              <strong class="mt-0">Gotabhaya Rajapaksa</strong>
+              <div class="progress mt-1">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" attr.aria-valuenow="{{socketData.gotaP}}" aria-valuemin="0" aria-valuemax="100" [style.width]="socketData.gotaP+'%'">
+                    <strong>{{socketData.gotaP}}%</strong>
+                  </div>
+              </div>
+              <div class="text-muted mt-1">
+                  <span><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;<strong>{{socketData.gota}}</strong></span>
+              </div>
+              
+            </div>
+          </div>
+    </li>
+    <li class="list-group-item">
+        <div class="media">
+            <img src="../../../assets/img/candidates/sajith.jpg" height="25%" width="25%" class="img-thumbnail mr-3" alt="...">
+            <div class="media-body">
+              <strong class="mt-0">Sajith Premadasa</strong>
+              <div class="progress mt-1">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" attr.aria-valuenow="{{socketData.sajithP}}" aria-valuemin="0" aria-valuemax="100" [style.width]="socketData.sajithP+'%'">
+                    <strong>{{socketData.sajithP}}%</strong>
+                  </div>
+              </div>
+              <div class="text-muted mt-1">
+                  <span><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;<strong>{{socketData.sajith}}</strong></span>
+              </div>
+              
+              
+            </div>
+          </div>
+    </li>
+    <li class="list-group-item">
+        <div class="media">
+            <img src="../../../assets/img/candidates/akd.jpg" height="25%" width="25%" class="img-thumbnail mr-3" alt="...">
+            <div class="media-body">
+              <strong class="mt-0">Anura Kumara Dissanayake</strong>
+              <div class="progress mt-1">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" attr.aria-valuenow="{{socketData.akdP}}" aria-valuemin="0" aria-valuemax="100" [style.width]="socketData.akdP+'%'">
+                    <strong>{{socketData.akdP}}%</strong>
+                  </div>
+              </div>
+              <div class="text-muted mt-1">
+                  <span><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;<strong>{{socketData.akd}}</strong></span>
+              </div>
+             
+              
+            </div>
+          </div>
+    </li>
+    <li class="list-group-item">
+        <div class="media">
+            <img src="../../../assets/img/candidates/mahesh.jpg" height="25%" width="25%" class="img-thumbnail mr-3" alt="...">
+            <div class="media-body">
+              <strong class="mt-0">Mahesh Senanayake</strong>
+              <div class="progress mt-1">
+                  <div class="progress-bar progress-bar-striped progress-bar-animated bg-dark" role="progressbar" attr.aria-valuenow="{{socketData.maheshP}}" aria-valuemin="0" aria-valuemax="100" [style.width]="socketData.maheshP+'%'">
+                    <strong>{{socketData.maheshP}}%</strong>
+                  </div>
+              </div>
+              <div class="text-muted mt-1">
+                  <span><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;<strong>{{socketData.mahesh}}</strong></span>
+              </div>
+              
+              
+            </div>
+          </div>
+    </li>
+  </ul>
+</div>
+
+<div class="col-md-8 mb-3">
+  <div class="card">
+    <div class="card-body">
+        <div style="display: block">
+            <canvas baseChart
+                    [data]="pieChartData"
+                    [labels]="pieChartLabels"
+                    [colors] = "chartColors"
+                    [chartType]="pieChartType"></canvas>
+          </div>
+    </div>
+    <div class="card-footer text-muted">
+        <div class="text-center">
+            <h6>TOTAL VOTES</h6>
+            <strong><i class="fas fa-users"></i> {{socketData.total}}</strong>
+        </div>
+    </div>
+  </div>
+</div>
+
+</div>
